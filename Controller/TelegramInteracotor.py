@@ -10,7 +10,7 @@ class TelegramInteractor:
     get_updates_met = "getUpdates"
 
     # #
-    token = "438088422:AAHY1q3dzl0uQ8tvJ95nGoS9xsp5IgVW08A"
+    token = "438668023:AAEZsIovdbO8jwOoE6bghB2B4Q0ijOFASG8" # cascoye sokhangoo!
     telegram = "https://api.telegram.org/bot"
 
     def __init__(self):
@@ -30,6 +30,10 @@ class TelegramInteractor:
         params = {
             "offset": offset
         }
+        if offset is None:
+            print ("access")
+            params = None
+
         result = TelegramInteractor.send_req_to_telegram_server(TelegramInteractor.get_updates_met, params)
         return result
 
@@ -37,4 +41,5 @@ class TelegramInteractor:
     def send_req_to_telegram_server(req_method, params):
         url = TelegramInteractor.telegram + TelegramInteractor.token + "/" + req_method
         r = requests.post(url, params)
+
         return r
