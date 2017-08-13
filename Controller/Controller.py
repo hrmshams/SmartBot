@@ -30,7 +30,6 @@ class Controller:
 
             # converting updates string into json !
             updates = json.loads(updates_text)["result"]
-            print(updates)
             # implementing the req_handler for all updates!
             for u in updates:
                 # adding to collection and running that!
@@ -45,8 +44,6 @@ class Controller:
 
             if len(updates) != 0:
                 self.__offset += 1
-
-            print(self.__offset)
 
             time.sleep(0.5)
         # END OF WHILE #

@@ -31,7 +31,7 @@ class TelegramInteractor:
             "offset": offset
         }
         if offset is None:
-            print ("access")
+            print("access")
             params = None
 
         result = TelegramInteractor.send_req_to_telegram_server(TelegramInteractor.get_updates_met, params)
