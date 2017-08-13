@@ -41,8 +41,6 @@ class RequestHandler(Thread):
         try:
             self.__type = update["message"]["entities"][0]["type"]
         except Exception as ae:
-            print (update)
-            print (ae)
             self.__type = Constants.MESSAGE_TYPE_ORDINARY
 
     """
