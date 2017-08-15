@@ -1,4 +1,4 @@
-import requests
+import requests,json
 
 
 # be aware you should use this class methods as static!
@@ -14,14 +14,20 @@ class TelegramInteractor:
     telegram = "https://api.telegram.org/bot"
 
     def __init__(self):
-        return None
+        pass
 
     @staticmethod
-    def send_message(chat_id, text):
+    def send_message(chat_id, text, reply_markup=[]):
         params = {
             "chat_id": chat_id,
-            "text": text
+            "text": text,
+            "parse_mode": "HTML",
         }
+        if reply_markup is not None:
+            str_key = json.dumps(reply_markup)
+            params["reply_markup"] = str_key
+
+        print(reply_markup)
         result = TelegramInteractor.send_req_to_telegram_server(TelegramInteractor.send_message_met, params)
         return result
 

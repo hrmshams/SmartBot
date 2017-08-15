@@ -63,13 +63,22 @@ class RequestHandler(Thread):
             pass
 
     def ans_start_command(self):
-        TelegramInteractor.send_message(self.__chat_id, Texts.START_TEXT)
+        keyboard = [
+            [{"text": Constants.KEYBOARD_COIN_CURRENCY}, {"text": Constants.KEYBOARD_TV_PLANS}],
+            [{"text": Constants.KeyBOARD_HELP}]
+        ]
+        reply_keyboard_markup = {
+            "keyboard": keyboard,
+            "resize_keyboard": True,
+            "one_time_keyboard": True
+        }
+
+        TelegramInteractor.send_message(self.__chat_id, Texts.START_TEXT, reply_keyboard_markup)
         print("request answered to : ", self.__first_name)
 
     def ans_command1(self):
-        TelegramInteractor.send_message(self.__chat_id, "دستور اول خواسته شد")
-        print("request answered to : ", self.__first_name)
+        pass
 
     def ans_ordinary_req(self):
-        TelegramInteractor.send_message(self.__chat_id, "متن عادی")
+        TelegramInteractor.send_message(self.__chat_id, "متن عادی", None)
         print("request answered to : ", self.__first_name)

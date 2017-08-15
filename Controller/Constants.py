@@ -4,3 +4,7 @@ class Constants:
 
     MESSAGE_TEXT_START = "/start"
     MESSAGE_TEXT_COMMAND1 = "/command1"
+
+    KEYBOARD_TV_PLANS = "📺 برنامه های تلویزیون"
+    KEYBOARD_COIN_CURRENCY = "💰 قیمت سکه و ارز"
+    KeyBOARD_HELP = "⁉️ راهنمای بات"
