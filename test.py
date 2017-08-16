@@ -18,3 +18,6 @@ from Model.CoinCurrencyPrice import CoinCurrencyPrice
 # cuttenStr = StringImplementer.string_cutter(mainStr, firstStr, endStr)
 # print(cuttenStr)
 # CoinCurrencyPrice.get_coin_currency_price()
+
+TvPlans.get_tv_plans(31)
+

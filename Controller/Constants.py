@@ -8,3 +8,5 @@ class Constants:
     KEYBOARD_TV_PLANS = "📺 برنامه های تلویزیون"
     KEYBOARD_COIN_CURRENCY = "💰 قیمت سکه و ارز"
     KeyBOARD_HELP = "⁉️ راهنمای بات"
+
+    KEYBOARD_BACK = "بازگشت ↩️"
