@@ -10,7 +10,7 @@ class TelegramInteractor:
     get_updates_met = "getUpdates"
 
     # #
-    token = "438668023:AAEZsIovdbO8jwOoE6bghB2B4Q0ijOFASG8" # cascoye sokhangoo!
+    token = "393845550:AAEQkQ_c_w2xtjXUm8cBXZ7rg_VJ3qQilmk" # ranggo!
     telegram = "https://api.telegram.org/bot"
 
     def __init__(self):

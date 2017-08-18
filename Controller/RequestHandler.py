@@ -1,7 +1,7 @@
 from threading import Thread
 
-from Controller.Texts import Texts
 from Model.Model import Model
+from Model.Texts import Texts
 from Model.TvPlans import TvPlans
 from .Constants import Constants
 from .TelegramInteracotor import TelegramInteractor
@@ -64,10 +64,11 @@ class RequestHandler(Thread):
     """
     def run(self):
         print("request got from : ", self.__first_name , "\ntext : ", self.__text)
+
         if self.__type == Constants.MESSAGE_TYPE_BOT_COMMAND:
             if self.__text == Constants.MESSAGE_TEXT_START:
-                self.ans_start_command()
-                return
+                TelegramInteractor.send_message(self.__chat_id, Texts.START_TEXT, self.__main_keyboard)
+
         else:
             if self.__text == Constants.KEYBOARD_TV_PLANS:
                 self.ans_tv_plan(1)
@@ -79,19 +80,16 @@ class RequestHandler(Thread):
                 TelegramInteractor.send_message(self.__chat_id, Texts.BACK_TEXT, self.__main_keyboard)
 
             elif self.__text == Constants.KEYBOARD_COIN_CURRENCY:
-                pass
+                TelegramInteractor.send_message(self.__chat_id, Model.get_coin_currency(), None)
 
             elif self.__text == Constants.KeyBOARD_HELP:
                 pass
 
             else:
                 self.ans_ordinary_req()
+                print("request answered to : ", self.__first_name)
 
-    def ans_start_command(self):
-        TelegramInteractor.send_message(self.__chat_id, Texts.START_TEXT, self.__main_keyboard)
-        print("request answered to : ", self.__first_name)
-
-    def ans_tv_plan(self, step:int):
+    def ans_tv_plan(self, step: int):
         if step == 1:
             message = "کانال موردنظر را انتخاب کنید."
             TelegramInteractor.send_message(self.__chat_id, message, TvPlans.get_channels_keyboard())
@@ -106,4 +104,3 @@ class RequestHandler(Thread):
 
     def ans_ordinary_req(self):
         TelegramInteractor.send_message(self.__chat_id, "منظوری دریافت نشد!", None)
-        print("request answered to : ", self.__first_name)
