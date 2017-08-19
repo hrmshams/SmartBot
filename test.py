@@ -3,7 +3,7 @@ from Model.TvPlans import TvPlans
 from Model.StringImplementer import StringImplementer
 from Model.CoinCurrencyPrice import CoinCurrencyPrice
 from Model.Model import Model
-
+from Model.Translator import Translator
 # t = Controller()
 # t.invoke()
 
@@ -19,8 +19,9 @@ from Model.Model import Model
 # cuttenStr = StringImplementer.string_cutter(mainStr, firstStr, endStr)
 # print(cuttenStr)
 
-print(CoinCurrencyPrice.get_coin_currency_price())
+# print(CoinCurrencyPrice.get_coin_currency_price())
 # str = "123"
 # print (str[0:len(str)])
 
 # CoinCurrencyPrice.third_tokenize("1123123123123123")
+Translator.translate("hello")

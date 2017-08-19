@@ -29,8 +29,12 @@ class RequestHandler(Thread):
         super(RequestHandler, self).__init__()
         self.get_important_data(update)
 
+        """
+        the main keyboard that will be shown to the user
+        """
         keyboard = [
             [{"text": Constants.KEYBOARD_COIN_CURRENCY}, {"text": Constants.KEYBOARD_TV_PLANS}],
+            [{"text": Constants.KEYBOARD_TRANSLATE}],
             [{"text": Constants.KeyBOARD_HELP}]
         ]
         reply_keyboard_markup = {
@@ -51,7 +55,7 @@ class RequestHandler(Thread):
 
         self.__chat_id = update["message"]["chat"]["id"]
         self.__message_id = update["message"]["message_id"]
-        self.__language = update["message"]["from"]["language_code"]
+        # self.__language = update["message"]["from"]["language_code"]
         self.__text = update["message"]["text"]
         self.__is_private = update["message"]["chat"]["type"]
         try:
@@ -81,6 +85,9 @@ class RequestHandler(Thread):
 
             elif self.__text == Constants.KEYBOARD_COIN_CURRENCY:
                 TelegramInteractor.send_message(self.__chat_id, Model.get_coin_currency(), None)
+
+            elif self.__text == Constants.KEYBOARD_TRANSLATE:
+                pass
 
             elif self.__text == Constants.KeyBOARD_HELP:
                 pass

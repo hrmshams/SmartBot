@@ -1,6 +1,7 @@
 from .TvPlans import TvPlans
 from .CoinCurrencyPrice import CoinCurrencyPrice
-from .Texts import Texts
+from .Translator import Translator
+
 
 class Model:
 
@@ -82,6 +83,6 @@ class Model:
 
         return text
 
-    # @staticmethod
-    # def get_start_command_answer():
-    #     return Texts.START_TEXT
+    @staticmethod
+    def translate(english_text):
+        return Translator.translate(english_text)

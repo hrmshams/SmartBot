@@ -27,6 +27,7 @@ or http://service.arzlive.com/e.js
 class CoinCurrencyPrice:
 
     rial_to_toman_list = ["3_2", "3_3", "3_10", "3_11", "3_12", "3_13", "3_14", "3_41", "3_42", "3_43", "3_44", "17_40"]
+
     # return a json
     @staticmethod
     def get_coin_currency_price():
