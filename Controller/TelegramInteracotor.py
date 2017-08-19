@@ -1,5 +1,5 @@
 import requests,json
-
+from .Constants import Constants
 
 # be aware you should use this class methods as static!
 # don't make any instances from this class!
@@ -10,7 +10,7 @@ class TelegramInteractor:
     get_updates_met = "getUpdates"
 
     # #
-    token = "393845550:AAEQkQ_c_w2xtjXUm8cBXZ7rg_VJ3qQilmk" # ranggo!
+    token = Constants.BotInfo.BOT_TOKEN  # ranggo!
     telegram = "https://api.telegram.org/bot"
 
     def __init__(self):

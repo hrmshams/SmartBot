@@ -1,5 +1,4 @@
 from threading import Thread
-
 from Model.Model import Model
 from Model.Texts import Texts
 from Model.TvPlans import TvPlans
@@ -7,7 +6,7 @@ from .Constants import Constants
 from .TelegramInteracotor import TelegramInteractor
 
 
-class RequestHandler(Thread):
+class RequestHandler:
     # user info
     __user_id = None
     __first_name = None
@@ -25,48 +24,57 @@ class RequestHandler(Thread):
 
     __main_keyboard = None
 
-    def __init__(self, update):
-        super(RequestHandler, self).__init__()
-        self.get_important_data(update)
+    #
+    __state = Constants.States.NORMAL
 
-        """
-        the main keyboard that will be shown to the user
-        """
-        keyboard = [
-            [{"text": Constants.KEYBOARD_COIN_CURRENCY}, {"text": Constants.KEYBOARD_TV_PLANS}],
-            [{"text": Constants.KEYBOARD_TRANSLATE}],
-            [{"text": Constants.KeyBOARD_HELP}]
-        ]
-        reply_keyboard_markup = {
-            "keyboard": keyboard,
-            "resize_keyboard": True,
-            "one_time_keyboard": True
-        }
+    def get_state(self):
+        return self.__state
+
+    """
+    if the class instanced for the first time (not existed in the collection)
+    it must be called just the __init__ method just by instancing the class!
+    but if the class there exist in the collection then method get_user_text must be called;
+    before calling run method !!!
+    """
+    def __init__(self, update, reply_keyboard_markup):
+        # super(RequestHandler, self).__init__()
+        self.get_const_data(update)
+        self.init_user_text(update)
+
+        # the main keyboard that will be shown to the user
         self.__main_keyboard = reply_keyboard_markup
 
-    def get_important_data(self, update):
+    def get_const_data(self, update):
+        # self.__message_id = update["message"]["message_id"] #
         self.__user_id = update["message"]["from"]["id"]
         self.__first_name = update["message"]["from"]["first_name"]
+        self.__chat_id = update["message"]["chat"]["id"]
+        self.__is_private = update["message"]["chat"]["type"]
 
         try:
             self.__username = update["message"]["from"]["username"]
-        except Exception as e:
+        except Exception:
             self.__username = None
 
-        self.__chat_id = update["message"]["chat"]["id"]
-        self.__message_id = update["message"]["message_id"]
-        # self.__language = update["message"]["from"]["language_code"]
-        self.__text = update["message"]["text"]
-        self.__is_private = update["message"]["chat"]["type"]
         try:
             self.__type = update["message"]["entities"][0]["type"]
-        except Exception as ae:
+        except Exception:
             self.__type = Constants.MESSAGE_TYPE_ORDINARY
+
+    def init_user_text(self, update):
+        self.__text = update["message"]["text"]
+
+    """
+    initializes the thread for answer_request method!!
+    """
+    def invoke(self):
+        t = Thread(target=self.answer_request)
+        t.start()
 
     """
     routine of answering happens in this function!
     """
-    def run(self):
+    def answer_request(self):
         print("request got from : ", self.__first_name , "\ntext : ", self.__text)
 
         if self.__type == Constants.MESSAGE_TYPE_BOT_COMMAND:

@@ -1,7 +1,7 @@
 from .TvPlans import TvPlans
 from .CoinCurrencyPrice import CoinCurrencyPrice
 from .Translator import Translator
-
+from Controller.Constants import Constants
 
 class Model:
 
@@ -54,7 +54,7 @@ class Model:
         for i in range(0, len(plans_name)):
             text = text + plans_name[i] + " :\n" + "<code>" + " | " + plans_start[i] + " | " + plans_end[i] + " | " + "</code>" + "\n"
 
-        text = text + "\n" + "@casscobot"
+        text = text + "\n" + Constants.BotInfo.BOT_USERNAME
 
         return text
 
@@ -79,7 +79,7 @@ class Model:
         text = text + Model.TEXT_EURO + SPACE + price["3_41"] + SPACE + Model.TEXT_TOMAN + "\n"
         text = text + Model.TEXT_POND + SPACE + price["3_42"] + SPACE + Model.TEXT_TOMAN + "\n"
         text = text + Model.TEXT_DERHAM + SPACE + price["3_43"] + SPACE + Model.TEXT_TOMAN + "\n"
-        text = text + "\n" + "@ranggobot"
+        text = text + "\n" + Constants.BotInfo.BOT_USERNAME
 
         return text
 

@@ -11,3 +11,12 @@ class Constants:
     KEYBOARD_TRANSLATE = "مترجم " + "🇬🇧"
 
     KEYBOARD_BACK = "بازگشت ↩️"
+
+    class States:
+        NORMAL = 1
+        ENGLISH_WORD_ENTERING = 2
+        TV_PLAN_CHANNEL_ENTERING = 3
+
+    class BotInfo:
+        BOT_USERNAME = "@ranggobot"
+        BOT_TOKEN =  "393845550:AAEQkQ_c_w2xtjXUm8cBXZ7rg_VJ3qQilmk"
