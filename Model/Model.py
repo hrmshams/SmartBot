@@ -85,4 +85,11 @@ class Model:
 
     @staticmethod
     def translate(english_text):
-        return Translator.translate(english_text)
+        json = Translator.translate(english_text)
+        text = json["text"]
+
+        final_text = english_text + "\n\n" + "ترجمه:" + "\n" + text + "\n\n" + Constants.BotInfo.BOT_USERNAME
+        return{
+            "text": final_text,
+            "voice": json["voice"]
+        }

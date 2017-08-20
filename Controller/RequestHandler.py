@@ -62,8 +62,10 @@ class RequestHandler:
             self.__type = Constants.MESSAGE_TYPE_ORDINARY
 
     def init_user_text(self, update):
-        self.__text = update["message"]["text"]
-
+        try:
+            self.__text = update["message"]["text"]
+        except:
+            print("couldn't get the user text")
     """
     initializes the thread for answer_request method!!
     """
@@ -113,16 +115,20 @@ class RequestHandler:
     def ans_english_word(self, step: int):
         if step == 1:
             self.__state = Constants.States.ENGLISH_WORD_ENTERING
-            message = "لغت یا متن موردنظر خود را وارد کنید."
+            message = Constants.TranslationMessages.INITIAL_MESSAGE
             TelegramInteractor.send_message(self.__chat_id, message, None)
 
         elif step == 2:
-            self.__state = Constants.States.NORMAL
-            translate_json = Model.translate(self.__text)
-            text = translate_json["text"]
-            voice = translate_json["voice"]
-            print("access before :")
-            TelegramInteractor.send_voice(self.__chat_id, voice, self.__main_keyboard, text)
+            if len(self.__text) > 75:
+                message = Constants.TranslationMessages.ILLEGAL_CHARACTER_LEN
+                TelegramInteractor.send_message(self.__chat_id, message, None)
+
+            else:
+                self.__state = Constants.States.NORMAL
+                translate_json = Model.translate(self.__text)
+                text = translate_json["text"]
+                voice = translate_json["voice"]
+                TelegramInteractor.send_voice(self.__chat_id, voice, self.__main_keyboard, text)
 
     def ans_tv_plan(self, step: int):
         if step == 1:

@@ -20,3 +20,7 @@ class Constants:
     class BotInfo:
         BOT_USERNAME = "@ranggobot"
         BOT_TOKEN =  "393845550:AAEQkQ_c_w2xtjXUm8cBXZ7rg_VJ3qQilmk"
+
+    class TranslationMessages:
+        INITIAL_MESSAGE = "لغت یا متن موردنظر خود را وارد کنید." + "\n" + "حداکثر کاراکتر مجاز ۷۵ کاراکتر می باشد."
+        ILLEGAL_CHARACTER_LEN = "طول متن واردشده بیشتر از ۷۵ کاراکتر است."+"\n"+"لطفا متن یا لغت دیگری وارد کنید"
