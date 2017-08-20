@@ -6,8 +6,9 @@ from .Constants import Constants
 class TelegramInteractor:
 
     # methods #
-    send_message_met = "sendMessage"
-    get_updates_met = "getUpdates"
+    send_message_meth = "sendMessage"
+    send_voice_meth = "sendVoice"
+    get_updates_meth = "getUpdates"
 
     # #
     token = Constants.BotInfo.BOT_TOKEN  # ranggo!
@@ -17,7 +18,7 @@ class TelegramInteractor:
         pass
 
     @staticmethod
-    def send_message(chat_id, text, reply_markup=[]):
+    def send_message(chat_id, text, reply_markup):
         params = {
             "chat_id": chat_id,
             "text": text,
@@ -28,7 +29,23 @@ class TelegramInteractor:
             params["reply_markup"] = str_key
 
         print(reply_markup)
-        result = TelegramInteractor.send_req_to_telegram_server(TelegramInteractor.send_message_met, params)
+        result = TelegramInteractor.send_req_to_telegram_server(TelegramInteractor.send_message_meth, params)
+        return result
+
+    @staticmethod
+    def send_voice(chat_id, voice, reply_markup, caption=""):
+        params = {
+            "chat_id": chat_id,
+            "voice": voice,
+        }
+        if reply_markup is not None:
+            str_key = json.dumps(reply_markup)
+            params["reply_markup"] = str_key
+
+        if caption != "":
+            params["caption"] = caption
+
+        result = TelegramInteractor.send_req_to_telegram_server(TelegramInteractor.send_voice_meth, params)
         return result
 
     @staticmethod
@@ -37,10 +54,10 @@ class TelegramInteractor:
             "offset": offset
         }
         if offset is None:
-            print ("access")
+            print("access")
             params = None
 
-        result = TelegramInteractor.send_req_to_telegram_server(TelegramInteractor.get_updates_met, params)
+        result = TelegramInteractor.send_req_to_telegram_server(TelegramInteractor.get_updates_meth, params)
         return result
 
     @staticmethod

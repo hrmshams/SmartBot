@@ -75,7 +75,7 @@ class RequestHandler:
     routine of answering happens in this function!
     """
     def answer_request(self):
-        print("request got from : ", self.__first_name , "\ntext : ", self.__text)
+        print("request got from : ", self.__first_name, "\ntext : ", self.__text)
 
         if self.__type == Constants.MESSAGE_TYPE_BOT_COMMAND:
             if self.__text == Constants.MESSAGE_TEXT_START:
@@ -97,7 +97,7 @@ class RequestHandler:
                     self.__state = Constants.States.NORMAL
                     TelegramInteractor.send_message(self.__chat_id, Texts.BACK_TEXT, self.__main_keyboard)
 
-                elif self.__text == Constants.KeyBOARD_HELP:
+                elif self.__text == Constants.KEYBOARD_HELP:
                     pass
 
                 else:
@@ -120,7 +120,9 @@ class RequestHandler:
             self.__state = Constants.States.NORMAL
             translate_json = Model.translate(self.__text)
             text = translate_json["text"]
-            TelegramInteractor.send_message(self.__chat_id, text, self.__main_keyboard)
+            voice = translate_json["voice"]
+            print("access before :")
+            TelegramInteractor.send_voice(self.__chat_id, voice, self.__main_keyboard, text)
 
     def ans_tv_plan(self, step: int):
         if step == 1:

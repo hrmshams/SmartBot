@@ -29,7 +29,7 @@ class Controller:
         keyboard = [
             [{"text": Constants.KEYBOARD_COIN_CURRENCY}, {"text": Constants.KEYBOARD_TV_PLANS}],
             [{"text": Constants.KEYBOARD_TRANSLATE}],
-            [{"text": Constants.KeyBOARD_HELP}]
+            [{"text": Constants.KEYBOARD_HELP}]
         ]
         main_reply_keyboard_markup = {
             "keyboard": keyboard,
