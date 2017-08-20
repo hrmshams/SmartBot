@@ -82,30 +82,49 @@ class RequestHandler:
                 TelegramInteractor.send_message(self.__chat_id, Texts.START_TEXT, self.__main_keyboard)
 
         else:
-            if self.__text == Constants.KEYBOARD_TV_PLANS:
-                self.ans_tv_plan(1)
+            if self.__state == Constants.States.NORMAL:
 
-            elif self.__text in TvPlans.channels_names:
+                if self.__text == Constants.KEYBOARD_TV_PLANS:
+                    self.ans_tv_plan(1)
+
+                elif self.__text == Constants.KEYBOARD_TRANSLATE:
+                    self.ans_english_word(1)
+
+                elif self.__text == Constants.KEYBOARD_COIN_CURRENCY:
+                    TelegramInteractor.send_message(self.__chat_id, Model.get_coin_currency(), None)
+
+                elif self.__text == Constants.KEYBOARD_BACK:
+                    self.__state = Constants.States.NORMAL
+                    TelegramInteractor.send_message(self.__chat_id, Texts.BACK_TEXT, self.__main_keyboard)
+
+                elif self.__text == Constants.KeyBOARD_HELP:
+                    pass
+
+                else:
+                    self.ans_ordinary_req()
+                    print("request answered to : ", self.__first_name)
+
+            elif self.__state == Constants.States.TV_PLAN_CHANNEL_ENTERING:
                 self.ans_tv_plan(2)
 
-            elif self.__text == Constants.KEYBOARD_BACK:
-                TelegramInteractor.send_message(self.__chat_id, Texts.BACK_TEXT, self.__main_keyboard)
+            elif self.__state == Constants.States.ENGLISH_WORD_ENTERING:
+                self.ans_english_word(2)
 
-            elif self.__text == Constants.KEYBOARD_COIN_CURRENCY:
-                TelegramInteractor.send_message(self.__chat_id, Model.get_coin_currency(), None)
+    def ans_english_word(self, step: int):
+        if step == 1:
+            self.__state = Constants.States.ENGLISH_WORD_ENTERING
+            message = "لغت یا متن موردنظر خود را وارد کنید."
+            TelegramInteractor.send_message(self.__chat_id, message, None)
 
-            elif self.__text == Constants.KEYBOARD_TRANSLATE:
-                pass
-
-            elif self.__text == Constants.KeyBOARD_HELP:
-                pass
-
-            else:
-                self.ans_ordinary_req()
-                print("request answered to : ", self.__first_name)
+        elif step == 2:
+            self.__state = Constants.States.NORMAL
+            translate_json = Model.translate(self.__text)
+            text = translate_json["text"]
+            TelegramInteractor.send_message(self.__chat_id, text, self.__main_keyboard)
 
     def ans_tv_plan(self, step: int):
         if step == 1:
+            self.__state = Constants.States.TV_PLAN_CHANNEL_ENTERING
             message = "کانال موردنظر را انتخاب کنید."
             TelegramInteractor.send_message(self.__chat_id, message, TvPlans.get_channels_keyboard())
         elif step == 2:
