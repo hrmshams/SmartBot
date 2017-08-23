@@ -2,7 +2,6 @@ import requests
 import json
 from .StringImplementer import StringImplementer
 from Controller.Constants import Constants
-
 """
 gets data from http://service.arzlive.com/p.js
 or http://service.arzlive.com/e.js
@@ -65,48 +64,13 @@ class CoinCurrencyPrice:
 
         for k, v in price_json.items():
             if k in CoinCurrencyPrice.rial_to_toman_list:
-                price_json[k] = CoinCurrencyPrice.third_tokenize(v[:-1])
+                price_json[k] = StringImplementer.third_tokenize(v[:-1])
 
         result = {
             "time": time_json_str,
             "price_json": price_json
         }
         return result
-
-    @staticmethod
-    def third_tokenize(string):
-        """
-        2,777,123
-        len => 7
-        index => [1,5]
-        [0,1],[1,5],[5,len(str)]
-
-        123,123,123
-        len => 9
-        index => [3,7]
-
-        12,131,513,512
-        len=>11
-        index => [2,6,10]
-        """
-        length = len(string)
-
-        index = length % 3
-        if index == 0:
-            index = 3
-        index_list = [0]
-        while index < length:
-            index_list.append(index)
-            index += 3
-
-        index_list.append(length)
-
-        new_string = ""
-        for i in range(0, len(index_list)-1):
-            new_string = new_string + string[index_list[i]:index_list[i+1]] + ","
-
-        new_string = new_string[:-1]
-        return new_string
 
     """
     just converts the initial data into the proper data to be presented into the user!
