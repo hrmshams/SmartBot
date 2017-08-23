@@ -3,6 +3,8 @@ from Model.TvPlans import TvPlans
 from Model.StringImplementer import StringImplementer
 from Model.CoinCurrencyPrice import CoinCurrencyPrice
 from Model.Model import Model
+from Model.FileImplementer import FileImplementer
+# from Model.DataGetter import DataGetter
 
 from Model.Translator import Translator
 # t = Controller()
@@ -28,3 +30,8 @@ from Model.Translator import Translator
 # Translator.translate("hello")
 
 # print(Controller.is_key_exist({"hey":"you", "hi":"me"}, "1hey"))
+
+# FileImplementer.rewrite_file("Model/Data/TvPlansData", "hey")
+# DataGetter.invoke()
+
+# print( TvPlans.get_tv_plans(34) )

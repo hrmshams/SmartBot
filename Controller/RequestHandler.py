@@ -104,13 +104,15 @@ class RequestHandler:
 
                 else:
                     self.ans_ordinary_req()
-                    print("request answered to : ", self.__first_name)
+                    # print("request answered to : ", self.__first_name)
 
             elif self.__state == Constants.States.TV_PLAN_CHANNEL_ENTERING:
                 self.ans_tv_plan(2)
 
             elif self.__state == Constants.States.ENGLISH_WORD_ENTERING:
                 self.ans_english_word(2)
+
+        print("request answered to : ", self.__first_name)
 
     def ans_english_word(self, step: int):
         if step == 1:

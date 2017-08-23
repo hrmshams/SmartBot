@@ -78,8 +78,27 @@ class TvPlans:
         for h4 in h4_tags:
             plans_name.append(h4.string)
 
-        print("access",plans_name)
+        # print("access",plans_name)
         return [start_times, end_times, plans_name]
+
+    @staticmethod
+    def get_final_result(channel_name):
+        tv_plan = TvPlans()
+        result = tv_plan.get_tv_plans(TvPlans.get_channel_names()[channel_name])
+
+        plans_name = result[2]
+        plans_start = result[0]
+        plans_end = result[1]
+
+        text = "📺 برنامه های " + channel_name + " 📺" + "\n\n"
+        text = text + "نام برنامه" + " | " + "تاریخ شروع" + " | " + "تاریخ پایان" + "\n"
+
+        for i in range(0, len(plans_name)):
+            text = text + plans_name[i] + " :\n" + "<code>" + " | " + plans_start[i] + " | " + plans_end[i] + " | " + "</code>" + "\n"
+
+        text = text + "\n" + Constants.BotInfo.BOT_USERNAME
+
+        return text
 
     @staticmethod
     def get_channels_keyboard():

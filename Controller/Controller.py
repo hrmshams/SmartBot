@@ -62,14 +62,14 @@ class Controller:
                     req_handler.init_user_text(u)
 
                     req_handler.invoke()
-                    print("access to collec")
+                    # print("access to collec")
 
                 else:
                     # adding the request to the collection!
                     req_handler = RequestHandler(u, main_reply_keyboard_markup)
                     self.__requests[user_id] = req_handler
                     req_handler.invoke()
-                    print("access to not collec")
+                    # print("access to not collec")
 
                 # checking the offset!
                 update_id = u["update_id"]

@@ -28,7 +28,7 @@ class TelegramInteractor:
             str_key = json.dumps(reply_markup)
             params["reply_markup"] = str_key
 
-        print(reply_markup)
+        # print(reply_markup)
         result = TelegramInteractor.send_req_to_telegram_server(TelegramInteractor.send_message_meth, params)
         return result
 
@@ -54,7 +54,7 @@ class TelegramInteractor:
             "offset": offset
         }
         if offset is None:
-            print("access")
+            # print("access")
             params = None
 
         result = TelegramInteractor.send_req_to_telegram_server(TelegramInteractor.get_updates_meth, params)
