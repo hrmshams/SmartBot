@@ -4,7 +4,7 @@ from Model.StringImplementer import StringImplementer
 from Model.CoinCurrencyPrice import CoinCurrencyPrice
 from Model.Model import Model
 from Model.FileImplementer import FileImplementer
-# from Model.DataGetter import DataGetter
+from Model.DataGetter import DataGetter
 from Model.Translator import Translator
 from Model.Weather import Weather
 import time
@@ -42,5 +42,6 @@ import time
 #     Weather.get_weather(None)
 #     time.sleep(10)
 
-print(Weather.get_desired_weather("tehran"))
+# print(Weather.get_desired_weather("tehran"))
 
+DataGetter.invoke()

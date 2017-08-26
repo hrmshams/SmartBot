@@ -4,6 +4,7 @@ gets data from yahoo weather api!
 import urllib, json
 import urllib.parse
 import requests
+from Controller.Constants import Constants
 
 """
 https://fa.wikipedia.org/wiki/%D8%A7%D8%B3%D8%AA%D8%A7%D9%86%E2%80%8C%D9%87%D8%A7%DB%8C_%D8%A7%DB%8C%D8%B1%D8%A7%D9%86
@@ -18,10 +19,31 @@ cities_eng_per = {
     "Bandar-e Bushehr": "بوشهر",
     "tehran": "تهران",
     "shahr kord": "شهرکرد"
+    # TODO
 }
 
 states_eng_per = {
-    "Sunny": "آفتابی"
+    "Sunny": ["آفتابی", "☀️ "],
+    "Partly Cloudy": ["بخشی ابری", "🌤"],
+    "Mostly Cloudy": ["اغلب ابری", "⛅️"],
+    "Cloudy": ["ابری", "☁️"],
+    "Fair": ["کمی ابری", "🌤"],
+    "Thunderstorms": ["باران و رعدوبرق", "⛈"],
+    "Scattered thunderstorms": ["رعدوبرق پراکنده", "⛈"],
+    "Breezy": ["وزش باد", "💨"],
+    "Blustery": ["وزش باد", "💨"],
+    "Mostly Sunny": ["اغلب آفتابی", "☀️ "]
+    # TODO
+}
+
+days_eng_per = {
+    "Sat": "شنبه",
+    "Sun": "یکشنبه",
+    "Mon": "دوشنبه",
+    "Tue": "سه شنبه",
+    "Wed": "چهارشنبه",
+    "Thu": "پنج شنبه",
+    "Fri": "جمعه"
 }
 
 class Weather:
@@ -64,32 +86,81 @@ class Weather:
             "cur_date": weather_result["condition"]["date"],
             "state": weather_result["condition"]["text"],
 
-            "forecast_0": {
+            "forecast": [{
                 "day": weather_result["forecast"][0]["day"],
                 "high": weather_result["forecast"][0]["high"],
                 "low": weather_result["forecast"][0]["low"],
                 "state": weather_result["forecast"][0]["text"]
             },
-            "forecast_1": {
+            {
                 "day": weather_result["forecast"][1]["day"],
                 "high": weather_result["forecast"][1]["high"],
                 "low": weather_result["forecast"][1]["low"],
                 "state": weather_result["forecast"][1]["text"]
             },
-            "forecast_2": {
+            {
                 "day": weather_result["forecast"][2]["day"],
                 "high": weather_result["forecast"][2]["high"],
                 "low": weather_result["forecast"][2]["low"],
                 "state": weather_result["forecast"][2]["text"]
-            }
+            },
+            {
+                "day": weather_result["forecast"][3]["day"],
+                "high": weather_result["forecast"][3]["high"],
+                "low": weather_result["forecast"][3]["low"],
+                "state": weather_result["forecast"][3]["text"]
+            },
+            {
+                "day": weather_result["forecast"][4]["day"],
+                "high": weather_result["forecast"][4]["high"],
+                "low": weather_result["forecast"][4]["low"],
+                "state": weather_result["forecast"][4]["text"]
+            },
+            {
+                "day": weather_result["forecast"][5]["day"],
+                "high": weather_result["forecast"][5]["high"],
+                "low": weather_result["forecast"][5]["low"],
+                "state": weather_result["forecast"][5]["text"]
+            },
+            {
+                "day": weather_result["forecast"][6]["day"],
+                "high": weather_result["forecast"][6]["high"],
+                "low": weather_result["forecast"][6]["low"],
+                "state": weather_result["forecast"][6]["text"]
+            }]
         }
 
+        # initializing the data for final text!
         try:
-            text = "آب و هوای شهر " + cities_eng_per[city] + "\n" + final_weather["cur_date"] + "\n"
-            text = text + "هوای فعلی :" + "\n" + final_weather["cur_temp"] + " - " \
-                   + states_eng_per[final_weather["state"]]
+            city_name = cities_eng_per[city]
         except:
-            text = "در دریافت اطلاعات مشکلی بوجود آمده است."
+            city_name = city
 
-        return text
-    
+        try:
+            cur_state_text = states_eng_per[final_weather["state"]][0]
+            cur_state_icon = states_eng_per[final_weather["state"]][1]
+        except:
+            cur_state_text = final_weather["state"]
+            cur_state_icon = ""
+
+        text = "آب و هوای شهر " + city_name + "\n\n" +\
+               "هوای فعلی :" + "\n" + final_weather["cur_date"] + "\n" +\
+               cur_state_icon + cur_state_text + " - " + final_weather["cur_temp"] + "درجه سانتی گراد" + "\n\n" +\
+               "پیش بینی وضع هوای روزهای آینده:" + "\n"
+
+        for f in final_weather["forecast"]:
+            try:
+                state_text = states_eng_per[f["state"]][0]
+                state_icon = states_eng_per[f["state"]][1]
+            except:
+                state_text = f["state"]
+                state_icon = ""
+
+            text = text + days_eng_per[f["day"]] + ":" + "\n" +\
+            state_icon + state_text + " - " + "🔻" + " حداقل دما: " + f["low"] + "درجه - " +\
+            "🔺" + " حداکثر دما: " + f["high"] + "درجه" + "\n\n"
+            print(f)
+
+        text = text + Constants.BotInfo.BOT_USERNAME
+
+        return [city_name, text]
