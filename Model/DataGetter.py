@@ -15,6 +15,8 @@ files just contain the whole text that must be presented to the user!
 summary : just save the servers data into the files !
 """
 
+# TODO : check seprating the files or all of data in one json file is it better or no difference?!
+
 
 class DataGetter:
     def __init__(self):
