@@ -5,8 +5,10 @@ from Model.CoinCurrencyPrice import CoinCurrencyPrice
 from Model.Model import Model
 from Model.FileImplementer import FileImplementer
 # from Model.DataGetter import DataGetter
-
 from Model.Translator import Translator
+from Model.Weather import Weather
+import time
+
 # t = Controller()
 # t.invoke()
 
@@ -18,7 +20,6 @@ from Model.Translator import Translator
 # mainStr = "hamid={}"
 # firstStr = "="
 # endStr = "="
-#
 # cuttenStr = StringImplementer.string_cutter(mainStr, firstStr, endStr)
 # print(cuttenStr)
 
@@ -35,3 +36,11 @@ from Model.Translator import Translator
 # DataGetter.invoke()
 
 # print( TvPlans.get_tv_plans(34) )
+
+# for i in range(0, 30):
+#     print("<==", i, "==>")
+#     Weather.get_weather(None)
+#     time.sleep(10)
+
+print(Weather.get_desired_weather("tehran"))
+
