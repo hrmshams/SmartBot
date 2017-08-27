@@ -58,16 +58,17 @@ class RequestHandler:
         except Exception:
             self.__username = "--"
 
-        try:
-            self.__type = update["message"]["entities"][0]["type"]
-        except Exception:
-            self.__type = Constants.MESSAGE_TYPE_ORDINARY
-
     def init_user_text(self, update):
         try:
             self.__text = update["message"]["text"]
         except:
             print("couldn't get the user text")
+
+        try:
+            self.__type = update["message"]["entities"][0]["type"]
+        except:
+            self.__type = Constants.MESSAGE_TYPE_ORDINARY
+
     """
     initializes the thread for answer_request method!!
     """
@@ -83,16 +84,25 @@ class RequestHandler:
         print(msg)
 
         if self.__type == Constants.MESSAGE_TYPE_BOT_COMMAND:
+            print("access to bot command")
             if self.__text == Constants.Commands.COMMAND_START:
+                print("access to start command!")
                 TelegramInteractor.send_message(self.__chat_id, Texts.START_TEXT, self.__main_keyboard)
 
             elif self.__text == Constants.Commands.COMMAND_SHOW_KEYBOARD:
                 pass # TODO
 
         else:
-            if self.__state == Constants.States.NORMAL:
+            print("access to else")
+            if self.__text == Constants.KeyboardButtons.KEYBOARD_BACK:
+                self.__state = Constants.States.NORMAL
+                TelegramInteractor.send_message(self.__chat_id, Texts.BACK_TEXT, self.__main_keyboard)
+
+            elif self.__state == Constants.States.NORMAL:
+                print("access to normal state")
 
                 if self.__text == Constants.KeyboardButtons.KEYBOARD_TV_PLANS:
+                    print("access to tvplan 1")
                     self.ans_tv_plan(1)
 
                 elif self.__text == Constants.KeyboardButtons.KEYBOARD_TRANSLATE:
@@ -104,10 +114,6 @@ class RequestHandler:
                 elif self.__text == Constants.KeyboardButtons.KEYBOARD_COIN_CURRENCY:
                     TelegramInteractor.send_message(self.__chat_id, Model.get_coin_currency(), None)
 
-                elif self.__text == Constants.KeyboardButtons.KEYBOARD_BACK:
-                    self.__state = Constants.States.NORMAL
-                    TelegramInteractor.send_message(self.__chat_id, Texts.BACK_TEXT, self.__main_keyboard)
-
                 elif self.__text == Constants.KeyboardButtons.KEYBOARD_HELP:
                     pass
 
@@ -115,13 +121,19 @@ class RequestHandler:
                     self.ans_ordinary_req()
 
             elif self.__state == Constants.States.TV_PLAN_CHANNEL_ENTERING:
+                print("access to tvplan2")
                 self.ans_tv_plan(2)
 
             elif self.__state == Constants.States.ENGLISH_WORD_ENTERING:
+                print("access to english2")
                 self.ans_english_word(2)
 
             elif self.__state == Constants.States.WEATHER_CITY_ENTERING:
+                print("access to weather2!")
                 self.ans_weather(2, self.__text)
+
+            else:
+                print("something wrong happened!")
 
         print("request answered to : ", self.__first_name)
 

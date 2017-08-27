@@ -34,13 +34,9 @@ class Model:
         json_text = FileImplementer.read_file(add)
         json_weather = json.loads(json_text)
 
-        print("====")
-        print(json_weather['تهران'])
-
         try:
             data = json_weather[city]
         except:
             data = "شهرموردنظر پیدا نشد!"
 
-        print(type(data))
         return data
