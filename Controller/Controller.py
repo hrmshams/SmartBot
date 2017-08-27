@@ -25,14 +25,40 @@ class Controller:
      and then starts the thread
     """
     def invoke(self):
-        # initializing the keyboard
-        keyboard = [
-            [{"text": Constants.KEYBOARD_COIN_CURRENCY}, {"text": Constants.KEYBOARD_TV_PLANS}],
-            [{"text": Constants.KEYBOARD_TRANSLATE}],
-            [{"text": Constants.KEYBOARD_HELP}]
+        """initializing the keyboards"""
+        '''
+        main keyboard
+        '''
+        main_keyboard = [
+            [{"text": Constants.KeyboardButtons.KEYBOARD_COIN_CURRENCY}, {"text": Constants.KeyboardButtons.KEYBOARD_TV_PLANS}],
+            [{"text": Constants.KeyboardButtons.KEYBOARD_TRANSLATE}, {"text": Constants.KeyboardButtons.KEYBOARD_WEATHER}],
+            [{"text": Constants.KeyboardButtons.KEYBOARD_HELP}]
         ]
-        main_reply_keyboard_markup = {
-            "keyboard": keyboard,
+        final_main_keyboard = {
+            "keyboard": main_keyboard,
+            "resize_keyboard": True,
+            "one_time_keyboard": True
+        }
+
+        '''
+        cities keyboard
+        '''
+        cities_keyboard = [
+            [{"text": Constants.KeyboardButtons.KEYBOARD_BACK}],
+            [{"text": "اصفهان"}, {"text": "مشهد"}, {"text": "تهران"}],
+            [{"text": "شیراز"}, {"text": "تبریز"}, {"text": "کرج"}],
+            [{"text": "کرمانشاه"}, {"text": "قم"}, {"text": "اهواز"}],
+            [{"text": "زاهدان"}, {"text": "رشت"}, {"text": "ارومیه"}],
+            [{"text": "همدان"}, {"text": "اراک"}, {"text": "کرمان"}],
+            [{"text": "بندرعباس"}, {"text": "اردبیل"}, {"text": "یزد"}],
+            [{"text": "سنندج"}, {"text": "قزوین"}, {"text": "زنجان"}],
+            [{"text": "ساری"}, {"text": "گرگان"}, {"text": "خرم آباد"}],
+            [{"text": "بیرجند"}, {"text": "بوشهر"}, {"text": "بجنورد"}],
+            [{"text": "سمنان"}, {"text": "شهرکرد"}, {"text": "ایلام"}],
+            [{"text": "یاسوج"}]
+        ]
+        final_cities_keyboard = {
+            "keyboard": cities_keyboard,
             "resize_keyboard": True,
             "one_time_keyboard": True
         }
@@ -66,7 +92,7 @@ class Controller:
 
                 else:
                     # adding the request to the collection!
-                    req_handler = RequestHandler(u, main_reply_keyboard_markup)
+                    req_handler = RequestHandler(u, final_main_keyboard, final_cities_keyboard)
                     self.__requests[user_id] = req_handler
                     req_handler.invoke()
                     # print("access to not collec")

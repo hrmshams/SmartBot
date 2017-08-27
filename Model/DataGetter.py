@@ -37,10 +37,10 @@ class DataGetter:
 
         # getting weather data
         weather_json = {}
-        for city in cities_eng_per:
-            print(city)
-            final_data = Weather.get_desired_weather(city)
-            weather_json[city] = final_data
+        for eng_city, per_city in cities_eng_per.items():
+            # print(city)
+            final_data = Weather.get_desired_weather(eng_city)
+            weather_json[per_city] = final_data
             # TODO sleep!
 
         weather_json_string = json.dumps(weather_json)

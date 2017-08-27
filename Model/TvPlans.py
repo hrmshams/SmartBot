@@ -103,7 +103,7 @@ class TvPlans:
     @staticmethod
     def get_channels_keyboard():
         keyboard =[
-            [{"text": Constants.KEYBOARD_BACK}],
+            [{"text": Constants.KeyboardButtons.KEYBOARD_BACK}],
             [{"text": "شبکه سه"}, {"text": "شبکه دو"}, {"text": "شبکه یک"}],
             [{"text": "شبکه خبر"}, {"text": "شبکه تهران"}, {"text": "شبکه چهار"}],
             [{"text": "شبکه مستند"}, {"text": "شبکه قرآن"}, {"text": "شبکه آموزش"}],

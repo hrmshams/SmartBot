@@ -1,6 +1,7 @@
 from .Translator import Translator
 from Controller.Constants import Constants
 from Model.FileImplementer import FileImplementer
+import json
 
 
 class Model:
@@ -18,11 +19,28 @@ class Model:
 
     @staticmethod
     def translate(english_text):
-        json = Translator.translate(english_text)
-        text = json["text"]
+        translate_json = Translator.translate(english_text)
+        text = translate_json["text"]
 
         final_text = english_text + "\n\n" + "ترجمه:" + "\n" + text + "\n\n" + Constants.BotInfo.BOT_USERNAME
         return{
             "text": final_text,
-            "voice": json["voice"]
+            "voice": translate_json["voice"]
         }
+
+    @staticmethod
+    def get_weather(city):
+        add = "Model/Data/Weather"
+        json_text = FileImplementer.read_file(add)
+        json_weather = json.loads(json_text)
+
+        print("====")
+        print(json_weather['تهران'])
+
+        try:
+            data = json_weather[city]
+        except:
+            data = "شهرموردنظر پیدا نشد!"
+
+        print(type(data))
+        return data

@@ -144,7 +144,7 @@ class Weather:
             cur_state_icon = ""
 
         text = "آب و هوای شهر " + city_name + "\n\n" +\
-               "هوای فعلی :" + "\n" + final_weather["cur_date"] + "\n" +\
+               "هوای فعلی آپدیت شده در تاریخ: " + "\n" + final_weather["cur_date"] + "\n" +\
                cur_state_icon + cur_state_text + " - " + final_weather["cur_temp"] + "درجه سانتی گراد" + "\n\n" +\
                "پیش بینی وضع هوای روزهای آینده:" + "\n"
 
@@ -157,10 +157,10 @@ class Weather:
                 state_icon = ""
 
             text = text + days_eng_per[f["day"]] + ":" + "\n" +\
-            state_icon + state_text + " - " + "🔻" + " حداقل دما: " + f["low"] + "درجه - " +\
-            "🔺" + " حداکثر دما: " + f["high"] + "درجه" + "\n\n"
-            print(f)
+            state_icon + state_text + " - " + "🔻" + f["low"] + "درجه - " +\
+            "🔺" + f["high"] + "درجه" + "\n\n"
+            # print(f)
 
         text = text + Constants.BotInfo.BOT_USERNAME
 
-        return [city_name, text]
+        return text

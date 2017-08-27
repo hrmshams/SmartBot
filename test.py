@@ -42,6 +42,6 @@ import time
 #     Weather.get_weather(None)
 #     time.sleep(10)
 
-# print(Weather.get_desired_weather("tehran"))
+# print(Weather.get_desired_weather("ardabil")[1])
 
-DataGetter.invoke()
+# DataGetter.invoke()

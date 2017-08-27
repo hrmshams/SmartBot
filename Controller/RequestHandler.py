@@ -23,6 +23,7 @@ class RequestHandler:
     __type = None
 
     __main_keyboard = None
+    __cities_keyboard = None
 
     #
     __state = Constants.States.NORMAL
@@ -36,13 +37,14 @@ class RequestHandler:
     but if the class there exist in the collection then method get_user_text must be called;
     before calling run method !!!
     """
-    def __init__(self, update, reply_keyboard_markup):
+    def __init__(self, update, main_keyboard, cities_keyboard):
         # super(RequestHandler, self).__init__()
         self.get_const_data(update)
         self.init_user_text(update)
 
         # the main keyboard that will be shown to the user
-        self.__main_keyboard = reply_keyboard_markup
+        self.__main_keyboard = main_keyboard
+        self.__cities_keyboard = cities_keyboard
 
     def get_const_data(self, update):
         # self.__message_id = update["message"]["message_id"] #
@@ -54,7 +56,7 @@ class RequestHandler:
         try:
             self.__username = update["message"]["from"]["username"]
         except Exception:
-            self.__username = None
+            self.__username = "--"
 
         try:
             self.__type = update["message"]["entities"][0]["type"]
@@ -77,40 +79,49 @@ class RequestHandler:
     routine of answering happens in this function!
     """
     def answer_request(self):
-        print("request got from : ", self.__first_name, "\ntext : ", self.__text)
+        msg = "request got from : firstname :: %s  username :: %s \ntext : %s" % (self.__first_name, self.__username , self.__text)
+        print(msg)
 
         if self.__type == Constants.MESSAGE_TYPE_BOT_COMMAND:
-            if self.__text == Constants.MESSAGE_TEXT_START:
+            if self.__text == Constants.Commands.COMMAND_START:
                 TelegramInteractor.send_message(self.__chat_id, Texts.START_TEXT, self.__main_keyboard)
+
+            elif self.__text == Constants.Commands.COMMAND_SHOW_KEYBOARD:
+                pass # TODO
 
         else:
             if self.__state == Constants.States.NORMAL:
 
-                if self.__text == Constants.KEYBOARD_TV_PLANS:
+                if self.__text == Constants.KeyboardButtons.KEYBOARD_TV_PLANS:
                     self.ans_tv_plan(1)
 
-                elif self.__text == Constants.KEYBOARD_TRANSLATE:
+                elif self.__text == Constants.KeyboardButtons.KEYBOARD_TRANSLATE:
                     self.ans_english_word(1)
 
-                elif self.__text == Constants.KEYBOARD_COIN_CURRENCY:
+                elif self.__text == Constants.KeyboardButtons.KEYBOARD_WEATHER:
+                    self.ans_weather(1, None)
+
+                elif self.__text == Constants.KeyboardButtons.KEYBOARD_COIN_CURRENCY:
                     TelegramInteractor.send_message(self.__chat_id, Model.get_coin_currency(), None)
 
-                elif self.__text == Constants.KEYBOARD_BACK:
+                elif self.__text == Constants.KeyboardButtons.KEYBOARD_BACK:
                     self.__state = Constants.States.NORMAL
                     TelegramInteractor.send_message(self.__chat_id, Texts.BACK_TEXT, self.__main_keyboard)
 
-                elif self.__text == Constants.KEYBOARD_HELP:
+                elif self.__text == Constants.KeyboardButtons.KEYBOARD_HELP:
                     pass
 
                 else:
                     self.ans_ordinary_req()
-                    # print("request answered to : ", self.__first_name)
 
             elif self.__state == Constants.States.TV_PLAN_CHANNEL_ENTERING:
                 self.ans_tv_plan(2)
 
             elif self.__state == Constants.States.ENGLISH_WORD_ENTERING:
                 self.ans_english_word(2)
+
+            elif self.__state == Constants.States.WEATHER_CITY_ENTERING:
+                self.ans_weather(2, self.__text)
 
         print("request answered to : ", self.__first_name)
 
@@ -145,6 +156,17 @@ class RequestHandler:
                 print("Error: in getting TvPlans data => RequestHandler line 90")
                 message = "در دریافت اطلاعات شبکه خطایی رخ داد." + "\n" + "لطفا این موضوع را به سازنده بات اطلاع دهید."
                 TelegramInteractor.send_message(self.__chat_id, message, None)
+
+    def ans_weather(self, step: int, city):
+        if step == 1:
+            self.__state = Constants.States.WEATHER_CITY_ENTERING
+            message = "شهر موردنظر خود را انتخاب کنید."
+            TelegramInteractor.send_message(self.__chat_id, message, self.__cities_keyboard)
+        elif step == 2:
+            self.__state = Constants.States.NORMAL
+            result = Model.get_weather(city)
+            print(result)
+            TelegramInteractor.send_message(self.__chat_id, result, self.__main_keyboard)
 
     def ans_ordinary_req(self):
         TelegramInteractor.send_message(self.__chat_id, "منظوری دریافت نشد!", None)
