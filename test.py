@@ -50,3 +50,5 @@ from Model.Database import Database
 
 # r = Database.create_table("table1", model)
 # print(r)
+
+print(Translator.longman_translate("start"))

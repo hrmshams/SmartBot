@@ -144,16 +144,23 @@ class RequestHandler:
             TelegramInteractor.send_message(self.__chat_id, message, None)
 
         elif step == 2:
-            if len(self.__text) > 75:
+            print("AC1")
+            if len(self.__text) > 20:
+                print("AC2")
                 message = Constants.TranslationMessages.ILLEGAL_CHARACTER_LEN
                 TelegramInteractor.send_message(self.__chat_id, message, None)
 
             else:
+                print("AC3")
                 self.__state = Constants.States.NORMAL
                 translate_json = Model.translate(self.__text)
                 text = translate_json["text"]
                 voice = translate_json["voice"]
-                TelegramInteractor.send_voice(self.__chat_id, voice, self.__main_keyboard, text)
+                TelegramInteractor.send_message(self.__chat_id, text, self.__main_keyboard)
+
+                print("voice = " , voice)
+                if voice != -1:
+                    TelegramInteractor.send_voice(self.__chat_id, voice, self.__main_keyboard, "-")
 
     def ans_tv_plan(self, step: int):
         if step == 1:

@@ -19,14 +19,15 @@ class Model:
 
     @staticmethod
     def translate(english_text):
-        translate_json = Translator.translate(english_text)
-        text = translate_json["text"]
+        translate_json = Translator.longman_translate(english_text)
 
-        final_text = english_text + "\n\n" + "ترجمه:" + "\n" + text + "\n\n" + Constants.BotInfo.BOT_USERNAME
-        return{
-            "text": final_text,
-            "voice": translate_json["voice"]
-        }
+        if translate_json == -1:
+            return{
+                "text": "جوابی پیدا نشد!",
+                "voice": -1
+            }
+        else:
+            return translate_json
 
     @staticmethod
     def get_weather(city):
