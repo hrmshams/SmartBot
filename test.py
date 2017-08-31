@@ -9,6 +9,8 @@ from Model.Translator import Translator
 from Model.Weather import Weather
 import time
 
+from Model.Database import Database
+
 # t = Controller()
 # t.invoke()
 
@@ -45,3 +47,6 @@ import time
 # print(Weather.get_desired_weather("ardabil")[1])
 
 # DataGetter.invoke()
+
+# r = Database.create_table("table1", model)
+# print(r)
