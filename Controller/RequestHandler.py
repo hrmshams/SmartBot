@@ -115,7 +115,7 @@ class RequestHandler:
                     TelegramInteractor.send_message(self.__chat_id, Model.get_coin_currency(), None)
 
                 elif self.__text == Constants.KeyboardButtons.KEYBOARD_HELP:
-                    pass
+                    TelegramInteractor.send_message(self.__chat_id, Constants.ANSWER_BOT_HELP, None)
 
                 else:
                     self.ans_ordinary_req()
@@ -160,7 +160,8 @@ class RequestHandler:
 
                 print("voice = " , voice)
                 if voice != -1:
-                    TelegramInteractor.send_voice(self.__chat_id, voice, self.__main_keyboard, "-")
+                    caption = translate_json["word"] + "\n\n" + Constants.BotInfo.BOT_USERNAME
+                    TelegramInteractor.send_voice(self.__chat_id, voice, self.__main_keyboard, caption)
 
     def ans_tv_plan(self, step: int):
         if step == 1:

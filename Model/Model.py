@@ -22,6 +22,7 @@ class Model:
         translate_json = Translator.longman_translate(english_text)
 
         if translate_json == -1:
+            # print("8888888888888888888888888888")
             return{
                 "text": "جوابی پیدا نشد!",
                 "voice": -1
