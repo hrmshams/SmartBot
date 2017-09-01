@@ -42,6 +42,8 @@ class Database:
     def close_db(self):
         self.__cnx.close()
 
+    """
+    """
     def create_table(self, table_name, model):
         # creating the query!
         query = "CREATE TABLE " + table_name + " ("
@@ -59,8 +61,63 @@ class Database:
         cursor.execute(query)
         cursor.close()
 
-    def find(self):
-        pass
+    '''
+    values_model = [
+    ['username', 'hrm'],
+    ['password', '123']
+    ]
+    '''
+    def insert(self, table_name, values_model):
+        query = "INSERT INTO %s (" % table_name
 
-    def insert(self):
-        pass
+        for i in range(0, len(values_model)):
+            query = query + values_model[i][0] + ", "
+
+        query = query[:-2]
+        query += ") VALUES ("
+
+        for i in range(0, len(values_model)):
+            query = query + values_model[i][1] + ", "
+
+        query = query[:-2]
+        query += ");"
+
+        print(query)
+        cursor = self.__cnx.cursor()
+
+        try:
+            cursor.execute(query)
+        except mysql.connector.ProgrammingError as e:
+            print("Error : sql syntax error!")
+            print(e.with_traceback())
+        except Exception as ex:
+            print("something else happened when executing sql query!")
+            print(ex.with_traceback())
+
+        self.__cnx.commit()
+        cursor.close()
+
+    '''
+    '''
+    def get_rows(self, table_name, condition):
+        query = "SELECT * FROM %s " % table_name
+        if condition is not None:
+            query += "WHERE %s" % condition
+
+        print(query)
+        cursor = self.__cnx.cursor()
+        cursor.execute(query)
+
+        result = []
+        for r in cursor:
+            result.append(r)
+
+        return result
+
+        # cursor.close()    # TODO :?
+
+    # takes the string and then return a string with two " at first and end of that!
+    @staticmethod
+    def string(str):
+        return "\"" + str + "\""
+

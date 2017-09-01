@@ -51,4 +51,28 @@ from Model.Database import Database
 # r = Database.create_table("table1", model)
 # print(r)
 
-print(Translator.longman_translate("start"))
+# print(Translator.longman_translate("start"))
+
+# table_model = [
+#     ["firstname", Database.VARCHAR + "(50)"],
+#     ["lastname", Database.VARCHAR + "(50)"]
+# ]
+#
+# values_model = [
+#     ["firstname", "\"reza\""],
+#     ["lastname", "\"123\""]
+# ]
+#
+# /db = Database(dbname="smart_bot", username="root", password="123")
+# db.connect_db()
+
+# try:
+#     db.create_table("first_table", table_model)
+# except:
+#     print("exception creating table!")
+
+
+# db.insert("first_table", values_model)
+# r = db.get_rows("first_table", None)
+# print(r[0][1])
+# db.close_db()
