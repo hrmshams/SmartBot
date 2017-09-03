@@ -103,11 +103,21 @@ class Model:
 
         # creating the database if not exist!
         query = "CREATE DATABASE IF NOT EXISTS " + dbname
-        self.__database.exec_query(query)
-
-        # creating the tables if not exists!
-        for t in database_info["tables"]:
-            self.__database.create_table(t["table_name"], t["table_struct"])
+        db.exec_query(query)
+        db.close_db()
 
         # initializing the connection data into Database class!
         self.__database = Database(username=username, password=password, dbname=dbname)
+
+        # creating the tables if not exists!
+        self.__database.connect_db()
+        for t in database_info["tables"]:
+
+            # checking if table exists or not!
+            cond = "table_schema='%s' and table_name='%s'" % (dbname, t["table_name"])
+            result = self.__database.get_rows("information_schema.tables", cond)
+
+            if len(result) == 0:
+                self.__database.create_table(t["table_name"], t["table_struct"])
+
+        self.__database.close_db()

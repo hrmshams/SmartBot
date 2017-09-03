@@ -49,9 +49,6 @@ class Database:
     def close_db(self):
         self.__cnx.close()
 
-    def asd(self):
-        pass
-
     """
     """
     def create_table(self, table_name, model):
@@ -66,6 +63,7 @@ class Database:
 
         query += ");"
 
+        print("===>", query)
         # executing the query!
         cursor = self.__cnx.cursor()
         cursor.execute(query)
@@ -141,4 +139,3 @@ class Database:
     @staticmethod
     def string(str):
         return "\"" + str + "\""
-
