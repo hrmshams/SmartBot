@@ -82,9 +82,9 @@ class Model:
                 __username = "--"
 
             model = [
-                ["user_id", user_id],
-                ["first_name", __first_name],
-                ["user_name", __username]
+                ["user_id", user_id, False],
+                ["first_name", __first_name, True],
+                ["user_name", __username, True]
             ]
 
             self.__database.insert(self.__users_table_name, model)

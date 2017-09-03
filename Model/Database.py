@@ -71,9 +71,10 @@ class Database:
 
     '''
     values_model = [
-    ['username', 'hrm'],
-    ['password', '123']
+    ['username', 'hrm', True],
+    ['password', '123', True]
     ]
+    note : the third value tells if column is string or not!
     '''
     def insert(self, table_name, values_model):
         query = "INSERT INTO %s (" % table_name
@@ -85,7 +86,13 @@ class Database:
         query += ") VALUES ("
 
         for i in range(0, len(values_model)):
-            query = query + values_model[i][1] + ", "
+
+            if values_model[i][2]: # is string
+                value = self.string(str(values_model[i][1]))
+            else:
+                value = str(values_model[i][1])
+
+            query = query + value + ", "
 
         query = query[:-2]
         query += ");"
@@ -97,10 +104,10 @@ class Database:
             cursor.execute(query)
         except mysql.connector.ProgrammingError as e:
             print("Error : sql syntax error!")
-            print(e.with_traceback())
+            # print(e.with_traceback())
         except Exception as ex:
             print("something else happened when executing sql query!")
-            print(ex.with_traceback())
+            # print(ex.with_traceback())
 
         self.__cnx.commit()
         cursor.close()
@@ -138,4 +145,4 @@ class Database:
     # takes the string and then return a string with two " at first and end of that!
     @staticmethod
     def string(str):
-        return "\"" + str + "\""
+        return "'" + str + "'"
