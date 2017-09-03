@@ -27,20 +27,30 @@ class Database:
     BOOLEAN = "BOOLEAN"
     # TODO complete this!
 
-    def __init__(self, username, password, dbname):
+    def __init__(self, username=None, password=None, dbname=None):
         self.__username = username
         self.__password = password
         self.__dbname = dbname
 
-    def connect_db(self):
+    def connect_db(self, username=None, password=None, dbname=None):
+        if username is None:
+            username = self.__username
+        if password is None:
+            password = self.__password
+        if dbname is None:
+            dbname = self.__dbname
+
         try:
-            self.__cnx = mysql.connector.connect(user=self.__username, password= self.__password, host=self.__host,
-                                          database=self.__dbname)
+            self.__cnx = mysql.connector.connect(user=username, password=password, host=self.__host,
+                                          database=dbname)
         except mysql.connector.Error as err:
             print("couldn't connect to database : %s" % self.__dbname)
 
     def close_db(self):
         self.__cnx.close()
+
+    def asd(self):
+        pass
 
     """
     """
@@ -115,6 +125,17 @@ class Database:
         return result
 
         # cursor.close()    # TODO :?
+
+    def exec_query(self, query):
+        cursor = self.__cnx.cursor()
+
+        try:
+            result = cursor.execute(query)
+            cursor.close()
+            return result
+        except Exception as e:
+            print("couldn't exec query")
+            print(e.with_traceback())
 
     # takes the string and then return a string with two " at first and end of that!
     @staticmethod

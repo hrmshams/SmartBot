@@ -3,9 +3,29 @@ from Controller.RequestHandler import RequestHandler
 import time
 import json
 from .Constants import Constants
-
+from threading import Thread
+from Model.Model import Model
+from Model.Database import Database
 
 class Controller:
+
+    ##############################
+    __database_info = {
+        "db_name": "smart_bot_db",
+        "tables": [
+            {
+                "table_name": "users",
+                "table_struct": [
+                    ["user_id", Database.INTEGER],
+                    ["first_name", Database.VARCHAR+"(50)"],
+                    ["user_name", Database.VARCHAR+"(50)"]
+                ]
+            }
+        ]
+    }
+    ##############################
+
+    __model = None
     __offset = 0
 
     """
@@ -16,7 +36,14 @@ class Controller:
     __requests = {}
 
     def __init__(self):
-        pass
+        db_connection = {
+            "username": "root",
+            "password": "123",
+        }
+        self.__model = Model()
+
+        """ configuring the database """
+        self.__model.configure_database(self.__database_info, db_connection)
 
     """
     note :
@@ -81,6 +108,13 @@ class Controller:
             for u in updates:
                 # checking if request exists in the collection!
 
+                '''
+                there is two ways :
+                1) the thread related to user request handler exists in the collection so we handle the request!
+                2) the thread doesn't exist in the collection so we must add the user_id and related thread to ..
+                   .. collection and then implementing some actions like checking if this user exists in the collection
+                   .. and somthing else!
+                '''
                 user_id = u["message"]["from"]["id"]
                 if Controller.is_key_exist(self.__requests, user_id):
                     # getting the user text and starting the thread
@@ -88,14 +122,15 @@ class Controller:
                     req_handler.init_user_text(u)
 
                     req_handler.invoke()
-                    # print("access to collec")
 
                 else:
                     # adding the request to the collection!
+                    t = Thread(target=self.__model.add_user_in_database(user_id, u))
+                    t.start()
+
                     req_handler = RequestHandler(u, final_main_keyboard, final_cities_keyboard)
                     self.__requests[user_id] = req_handler
                     req_handler.invoke()
-                    # print("access to not collec")
 
                 # checking the offset!
                 update_id = u["update_id"]
