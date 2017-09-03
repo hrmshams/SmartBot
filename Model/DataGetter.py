@@ -24,21 +24,24 @@ class DataGetter:
 
     @staticmethod
     def invoke():
-        # # getting coin currency data and saving them!
-        # coin_currency_data = CoinCurrencyPrice.get_final_data()
-        # FileImplementer.rewrite_file("Model/Data/CoinCurrencyData", coin_currency_data)
-        #
-        # # getting tv plans data and saving them!
-        # channel_names = TvPlans.get_channel_names()
-        # for chn in channel_names:
-        #     string = TvPlans.get_final_result(chn)
-        #     print(string)
-        #     FileImplementer.rewrite_file("Model/Data/"+"TvPlansData"+chn, string)
+        # getting coin currency data and saving them!
+        print("getting data :: coin_currency")
+        coin_currency_data = CoinCurrencyPrice.get_final_data()
+        FileImplementer.rewrite_file("Model/Data/CoinCurrencyData", coin_currency_data)
+
+        # getting tv plans data and saving them!
+        channel_names = TvPlans.get_channel_names()
+        print("getting data :: tv channels")
+        for chn in channel_names:
+            print("     --", chn)
+            string = TvPlans.get_final_result(chn)
+            FileImplementer.rewrite_file("Model/Data/"+"TvPlansData"+chn, string)
 
         # getting weather data
+        print("getting data :: weather")
         weather_json = {}
         for eng_city, per_city in cities_eng_per.items():
-            # print(city)
+            print("     --", eng_city)
             final_data = Weather.get_desired_weather(eng_city)
             weather_json[per_city] = final_data
             # TODO sleep!

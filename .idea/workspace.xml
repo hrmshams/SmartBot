@@ -2,8 +2,27 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="70e53156-867d-4f27-abcb-2d8e443b7de9" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Model/Database.py" afterPath="$PROJECT_DIR$/Model/Database.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Model/Model.py" afterPath="$PROJECT_DIR$/Model/Model.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Model/Data/CoinCurrencyData" afterPath="$PROJECT_DIR$/Model/Data/CoinCurrencyData" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Model/Data/TvPlansDataشبکه آموزش" afterPath="$PROJECT_DIR$/Model/Data/TvPlansDataشبکه آموزش" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Model/Data/TvPlansDataشبکه افق" afterPath="$PROJECT_DIR$/Model/Data/TvPlansDataشبکه افق" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Model/Data/TvPlansDataشبکه امید" afterPath="$PROJECT_DIR$/Model/Data/TvPlansDataشبکه امید" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Model/Data/TvPlansDataشبکه تماشا" afterPath="$PROJECT_DIR$/Model/Data/TvPlansDataشبکه تماشا" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Model/Data/TvPlansDataشبکه تهران" afterPath="$PROJECT_DIR$/Model/Data/TvPlansDataشبکه تهران" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Model/Data/TvPlansDataشبکه خبر" afterPath="$PROJECT_DIR$/Model/Data/TvPlansDataشبکه خبر" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Model/Data/TvPlansDataشبکه دو" afterPath="$PROJECT_DIR$/Model/Data/TvPlansDataشبکه دو" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Model/Data/TvPlansDataشبکه سلامت" afterPath="$PROJECT_DIR$/Model/Data/TvPlansDataشبکه سلامت" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Model/Data/TvPlansDataشبکه سه" afterPath="$PROJECT_DIR$/Model/Data/TvPlansDataشبکه سه" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Model/Data/TvPlansDataشبکه قرآن" afterPath="$PROJECT_DIR$/Model/Data/TvPlansDataشبکه قرآن" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Model/Data/TvPlansDataشبکه مستند" afterPath="$PROJECT_DIR$/Model/Data/TvPlansDataشبکه مستند" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Model/Data/TvPlansDataشبکه نسیم" afterPath="$PROJECT_DIR$/Model/Data/TvPlansDataشبکه نسیم" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Model/Data/TvPlansDataشبکه نمایش" afterPath="$PROJECT_DIR$/Model/Data/TvPlansDataشبکه نمایش" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Model/Data/TvPlansDataشبکه ورزش" afterPath="$PROJECT_DIR$/Model/Data/TvPlansDataشبکه ورزش" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Model/Data/TvPlansDataشبکه پویا" afterPath="$PROJECT_DIR$/Model/Data/TvPlansDataشبکه پویا" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Model/Data/TvPlansDataشبکه چهار" afterPath="$PROJECT_DIR$/Model/Data/TvPlansDataشبکه چهار" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Model/Data/TvPlansDataشبکه یک" afterPath="$PROJECT_DIR$/Model/Data/TvPlansDataشبکه یک" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Model/Data/Weather" afterPath="$PROJECT_DIR$/Model/Data/Weather" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Model/DataGetter.py" afterPath="$PROJECT_DIR$/Model/DataGetter.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -21,43 +40,31 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="Database.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Model/Database.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1864">
-              <caret line="142" column="34" lean-forward="true" selection-start-line="142" selection-start-column="34" selection-end-line="142" selection-end-column="34" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Model.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Model.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Model/Model.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1160">
+            <state relative-caret-position="-1187">
               <caret line="30" column="28" lean-forward="true" selection-start-line="30" selection-start-column="28" selection-end-line="30" selection-end-column="28" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Controller.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Controller/Controller.py">
+      <file leaf-file-name="test.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/test.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="860">
-              <caret line="127" column="0" lean-forward="false" selection-start-line="127" selection-start-column="0" selection-end-line="127" selection-end-column="0" />
-              <folding>
-                <element signature="e#0#51#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="216">
+              <caret line="47" column="0" lean-forward="true" selection-start-line="47" selection-start-column="0" selection-end-line="47" selection-end-column="0" />
+              <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="main.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/main.py">
+      <file leaf-file-name="DataGetter.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Model/DataGetter.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="54">
-              <caret line="3" column="0" lean-forward="false" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
+            <state relative-caret-position="302">
+              <caret line="44" column="37" lean-forward="false" selection-start-line="44" selection-start-column="37" selection-end-line="44" selection-end-column="37" />
               <folding />
             </state>
           </provider>
@@ -113,15 +120,15 @@
         <option value="$PROJECT_DIR$/Model/CoinCurrencyPrice.py" />
         <option value="$PROJECT_DIR$/Model/goslate.py" />
         <option value="$PROJECT_DIR$/Model/TvPlans.py" />
-        <option value="$PROJECT_DIR$/Model/DataGetter.py" />
         <option value="$PROJECT_DIR$/Model/Weather.py" />
         <option value="$PROJECT_DIR$/Model/Translator.py" />
         <option value="$PROJECT_DIR$/Controller/RequestHandler.py" />
         <option value="$PROJECT_DIR$/Controller/Constants.py" />
-        <option value="$PROJECT_DIR$/test.py" />
         <option value="$PROJECT_DIR$/Controller/Controller.py" />
         <option value="$PROJECT_DIR$/Model/Model.py" />
         <option value="$PROJECT_DIR$/Model/Database.py" />
+        <option value="$PROJECT_DIR$/Model/DataGetter.py" />
+        <option value="$PROJECT_DIR$/test.py" />
       </list>
     </option>
   </component>
@@ -477,10 +484,10 @@
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.17992565" sideWeight="0.5" order="1" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.0" sideWeight="0.22379182" order="0" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.07692308" sideWeight="0.22379182" order="0" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.0" sideWeight="0.77620816" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.07692308" sideWeight="0.77620816" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
@@ -714,13 +721,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Controller/TelegramInteracotor.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1152">
-          <caret line="65" column="0" lean-forward="false" selection-start-line="65" selection-start-column="0" selection-end-line="65" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file:///usr/lib/python3/dist-packages/requests/api.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1260">
@@ -739,13 +739,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="137">
           <caret line="394" column="0" lean-forward="false" selection-start-line="394" selection-start-column="0" selection-end-line="394" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Model/DataGetter.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="756">
-          <caret line="47" column="0" lean-forward="true" selection-start-line="47" selection-start-column="0" selection-end-line="47" selection-end-column="0" />
         </state>
       </provider>
     </entry>
@@ -777,33 +770,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Controller/RequestHandler.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="216">
-          <caret line="55" column="12" lean-forward="true" selection-start-line="55" selection-start-column="12" selection-end-line="55" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="258">
-          <caret line="67" column="0" lean-forward="false" selection-start-line="55" selection-start-column="0" selection-end-line="67" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file:///usr/lib/python3/dist-packages/mysql/connector/cursor.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="66">
           <caret line="514" column="0" lean-forward="false" selection-start-line="514" selection-start-column="0" selection-end-line="514" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Model/Database.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1864">
-          <caret line="142" column="34" lean-forward="true" selection-start-line="142" selection-start-column="34" selection-end-line="142" selection-end-column="34" />
           <folding />
         </state>
       </provider>
@@ -816,9 +786,17 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/Model/Database.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="406">
+          <caret line="142" column="34" lean-forward="true" selection-start-line="142" selection-start-column="34" selection-end-line="142" selection-end-column="34" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/Controller/Controller.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="860">
+        <state relative-caret-position="64">
           <caret line="127" column="0" lean-forward="false" selection-start-line="127" selection-start-column="0" selection-end-line="127" selection-end-column="0" />
           <folding>
             <element signature="e#0#51#0" expanded="true" />
@@ -826,10 +804,42 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/Controller/RequestHandler.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1952">
+          <caret line="55" column="12" lean-forward="true" selection-start-line="55" selection-start-column="12" selection-end-line="55" selection-end-column="12" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Controller/TelegramInteracotor.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="460">
+          <caret line="65" column="0" lean-forward="false" selection-start-line="65" selection-start-column="0" selection-end-line="65" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/Model/Model.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1160">
+        <state relative-caret-position="-1187">
           <caret line="30" column="28" lean-forward="true" selection-start-line="30" selection-start-column="28" selection-end-line="30" selection-end-column="28" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Model/DataGetter.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="302">
+          <caret line="44" column="37" lean-forward="false" selection-start-line="44" selection-start-column="37" selection-end-line="44" selection-end-column="37" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="216">
+          <caret line="47" column="0" lean-forward="true" selection-start-line="47" selection-start-column="0" selection-end-line="47" selection-end-column="0" />
           <folding />
         </state>
       </provider>
